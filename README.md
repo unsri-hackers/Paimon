@@ -19,3 +19,12 @@ hotfix
 issue
 -> git checkout -b issue/[issue_number]
 ```  
+
+## Running for Development
+(First time only)
+- Install python 3.9
+- Make sure pip installed
+- Install pipenv `pip install -U pipenv`
+
+Running the app
+`pipenv run python src/main.py`
