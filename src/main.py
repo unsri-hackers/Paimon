@@ -22,7 +22,8 @@ def intro(update, context):
 if __name__ == '__main__':
     load_dotenv()
     api_key = os.getenv('API_KEY')
-    updater = Updater(api_key, use_context=True)
+    print(api_key)
+    updater = Updater(api_key)
     dp = updater.dispatcher
 
     dp.add_handler(CommandHandler('intro', intro))
