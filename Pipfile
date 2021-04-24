@@ -8,6 +8,3 @@ python-dotenv = "==0.17.0"
 python-telegram-bot = "==13.4.1"
 
 [dev-packages]
-
-[requires]
-python_version = "3.9"
