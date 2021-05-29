@@ -1,6 +1,11 @@
 name: ci
-on: [pull_request, pull_request_target, push]
-  branches: main
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
   
 jobs:
   publish-paimon-docker:
