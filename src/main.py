@@ -1,7 +1,12 @@
+from dotenv import load_dotenv
+import logging
 import os
 from os.path import join, dirname
-from dotenv import load_dotenv
+
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+
+
+logging.basicConfig(level=os.environ.get('LOGLEVEL', 'INFO').upper())
 
 
 def welcome(update, context):
@@ -9,24 +14,26 @@ def welcome(update, context):
         user = str(new_user_obj['first_name']) + " " + str(new_user_obj['last_name'])
         context.bot.send_message(chat_id=update.message.chat_id,
                                  text='Halo ' + str(user) + ' ,'
-                                                            '\n\nSelamat datang di grup Attack On IF yaa! '
-                                                            '\nSalam Kenal yaaa!')
+                                                            '\n\nSelamat datang di grup Attack On IF! '
+                                                            '\nSalam kenal yaaa!')
 
 
 def intro(update, context):
-    context.bot.send_message(chat_id=update.message.chat_id, text='Halo semuanya namaku paimon! ^_^'
+    context.bot.send_message(chat_id=update.message.chat_id, text='Halo semuanya namaku Paimon! ^_^'
                                                                   '\nAku bakal jadi teman kalian di grup Attack On '
-                                                                  'If! Salam Kenal ya!\n\n\nEH ADA TITAN!!!')
+                                                                  'IF! Salam Kenal ya!\n\n\nEH ADA TITAN!!!')
 
 
 if __name__ == '__main__':
     load_dotenv()
-    api_key = os.getenv('API_KEY')
-    print(api_key)
-    updater = Updater(api_key)
+    telegram_bot_token = os.getenv('TELEGRAM_BOT_TOKEN')
+
+    updater = Updater(telegram_bot_token)
     dp = updater.dispatcher
 
     dp.add_handler(CommandHandler('intro', intro))
     dp.add_handler(MessageHandler(Filters.status_update.new_chat_members, welcome))
+
+    logging.info("🤖 Paimon is running...")
     updater.start_polling()
     updater.idle()
