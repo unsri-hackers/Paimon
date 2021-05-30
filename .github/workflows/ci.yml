@@ -1,12 +1,12 @@
 name: ci
-on: 
+on:
   push:
     branches:
       - main
   pull_request:
     branches:
       - main
-  
+
 jobs:
   publish-paimon-docker:
     if: >-
@@ -31,5 +31,4 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GHCR_TOKEN }}
           registry: ghcr.io
-          build_args: GITHUB_TOKEN=${{ secrets.DSP_REPO_TOKEN }}
-          tags: ${{ env.branch_name }}
+          tag_with_ref: true
