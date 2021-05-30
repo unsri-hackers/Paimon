@@ -1,13 +1,8 @@
 FROM python:3.7-slim
 
-ARG API_KEY
-COPY . /app
-WORKDIR /app
+COPY . /src
+WORKDIR /src
 
-RUN pip install pipenv && \
-  pipenv install --deploy
+RUN pip install pipenv && pipenv install --skip-lock
 
-RUN export $(cat .env) 
-RUN echo 'export $(cat .env)'
-
-CMD ["pipenv", "run", "python", "app/main.py"]
+CMD ["pipenv", "run", "python", "-m", "src.main"]
