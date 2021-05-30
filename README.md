@@ -16,7 +16,7 @@ Bot that will help to manage Attack on IF group
 pipenv install --skip-lock
 ```
 
-## Run Paimon
+### Run Paimon
 
 ```bash
 TELEGRAM_BOT_TOKEN=<your-telegram-bot-token> pipenv run python -m src.main
