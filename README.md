@@ -13,13 +13,19 @@ Bot that will help to manage Attack on IF group
 ### Install dependencies
 
 ```bash
-pipenv install --skip-lock
+pipenv install --dev --skip-lock 
 ```
 
 ### Run Paimon
 
 ```bash
 TELEGRAM_BOT_TOKEN=<your-telegram-bot-token> pipenv run python -m src.main
+```
+
+### Test source code
+
+```bash
+pipenv run pytest
 ```
 
 ### Using Docker
